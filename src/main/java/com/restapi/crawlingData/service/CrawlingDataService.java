@@ -5,11 +5,11 @@ import java.util.Optional;
 import java.util.ArrayList;
 
 import com.restapi.crawlingData.domain.CrawlingData;
-import com.restapi.crawlingData.repository.CrawlingDataVoRepository;
+import com.restapi.crawlingData.repository.CrawlingDataRepository;
 
 public class CrawlingDataService{
 	
-	private CrawlingDataVoRepository crawlingRepository;
+	private CrawlingDataRepository crawlingRepository;
 	
 	public Optional<CrawlingData> findByIdx(Long idx) {
 		Optional<CrawlingData> data = findByIdx(idx);
