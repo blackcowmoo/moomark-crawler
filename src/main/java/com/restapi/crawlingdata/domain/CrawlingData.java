@@ -1,4 +1,4 @@
-package com.restapi.crawlingData.domain;
+package com.restapi.crawlingdata.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,18 +30,23 @@ public class CrawlingData{
 	@Column(name = "idx")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idx;
+	
+	@Column(name = "user_id")
 	private Long userId;
 	
-	@Column(length = 500, nullable = false)
+	@Column(length = 500, nullable = false, name="sitename")
 	private String siteName;
 	
-	@Column(length = 500, nullable = false)
+	@Column(length = 500, nullable = false, name="title")
 	private String title;
 	
-	@Column(length = 500, nullable = false)
+	@Column(length = 500, nullable = false, name="url")
 	private String url;
-//	private String searchInfo;
+
+	@Column(nullable = false, name = "search_time")
 	private LocalDateTime searchTimeAt;
+	
+	@Column(nullable = false, name = "search_date")
 	private LocalDate searchDateAt;
 
 	@Builder
