@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 public class SpringConfig {
 	
-	private final CrawlingDataRepository crawlingDatarepository;
+	private final JpaCrawlingDataRepository crawlingDatarepository;
 	
 	@Autowired
-	public SpringConfig(CrawlingDataRepository crawlingDataRepository) {
+	public SpringConfig(JpaCrawlingDataRepository crawlingDataRepository) {
 		this.crawlingDatarepository = crawlingDataRepository;
 	}
 	
