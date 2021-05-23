@@ -7,13 +7,18 @@ import com.restapi.crawlingdata.domain.CrawlingSiteUrl;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CrawlingDataService {
 
-	private final JpaCrawlingDataRepository crawlingDataRepository;
+
+	private final CrawlingDataRepository crawlingDataRepository;
 	private final CrawlingSetting setting = new CrawlingSetting();
 
-	public CrawlingDataService(JpaCrawlingDataRepository crawlingDataRepository) {
+	@Autowired
+	public CrawlingDataService(CrawlingDataRepository crawlingDataRepository) {
 		this.crawlingDataRepository = crawlingDataRepository;
 	}
 
