@@ -1,14 +1,11 @@
-package com.restapi.crawlingdata.domain;
+package com.restapi.crawling.crawlingdata.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import org.jsoup.select.Elements;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
@@ -17,12 +14,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
-@Data
-@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-
 @Entity(name="data")
 public class CrawlingData{
 	

@@ -1,10 +1,9 @@
-package com.restapi.crawlingdata.controller;
+package com.restapi.crawling.crawlingdata.controller;
 
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.restapi.crawlingdata.repository.CrawlingDataRepository;
-import com.restapi.crawlingdata.service.CrawlingDataService;
+import com.restapi.crawling.crawlingdata.service.CrawlingDataService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

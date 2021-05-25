@@ -1,11 +1,15 @@
-package com.restapi.crawlingdata.repository;
+package com.restapi.crawling.crawlingdata.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.restapi.crawlingdata.domain.CrawlingData;
+import org.springframework.stereotype.Repository;
+
+import com.restapi.crawling.crawlingdata.domain.CrawlingData;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Repository
 public interface CrawlingDataRepository extends JpaRepository<CrawlingData, Long>{
 	
 	public Optional<CrawlingData> findByIdx(Long idx);
