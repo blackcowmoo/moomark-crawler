@@ -18,8 +18,10 @@ import org.springframework.stereotype.Service;
 public class CrawlingDataService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	private final CrawlingDataRepository crawlingDataRepository;
 	private final JobkoreaCrawlingSetting setting = new JobkoreaCrawlingSetting();
+
+	@Autowired
+	private final CrawlingDataRepository crawlingDataRepository;
 
 	@Autowired
 	public CrawlingDataService(CrawlingDataRepository crawlingDataRepository) {
@@ -27,13 +29,19 @@ public class CrawlingDataService {
 	}
 
 	/**
-	 * 정보 크롤링
+	 * 크롤링한 데이터 DB에 저장
 	 */
 	public void saveCrawlingInfo(CrawlingData crawlingData) {
 		crawlingDataRepository.save(crawlingData);
 	}
-
-	public void crawlingDataWeb(Long userId, String keyword) {
+	
+	
+	/**
+	 * Crawling 시작 함수
+	 * @param userId
+	 * @param keyword
+	 */
+	public void startCrawlingDataWeb(Long userId, String keyword) {
 		setting.setKeword(keyword);
 		Elements elements = null;
 		
@@ -52,6 +60,15 @@ public class CrawlingDataService {
 			
 			saveCrawlingInfo(crawlingData);
 		}
+	}
+	
+	/**
+	 * USER ID 기반의 crawlingData 찾기
+	 * @param userId
+	 * @return
+	 */
+	public java.util.Optional<CrawlingData> fincCrawlingDataByUserId(Long userId) {
+		return crawlingDataRepository.findByUserId(userId);
 	}
 
 }

@@ -12,6 +12,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.restapi.crawling.crawlingdata.domain.CrawlingData;
 
 
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
+
 
 @DataJpaTest
 @ExtendWith(SpringExtension.class)

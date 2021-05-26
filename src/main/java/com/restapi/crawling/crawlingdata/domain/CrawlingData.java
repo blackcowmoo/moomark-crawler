@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="data")
 public class CrawlingData{

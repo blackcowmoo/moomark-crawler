@@ -1,44 +1,41 @@
 package com.restapi.crawling.crawlingdata.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
-
-import com.restapi.crawling.crawlingdata.domain.CrawlingData;
-import com.restapi.crawling.crawlingdata.repository.CrawlingDataRepository;
-
-import java.util.Optional;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RestClientTest(CrawlingDataService.class)
+import com.restapi.crawling.crawlingdata.repository.CrawlingDataRepository;
+
+@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class CrawlingDataServiceTest {
 
+	@Mock
+	private CrawlingDataRepository crawlingRepository;
 	
-	@Autowired
-	CrawlingDataRepository craw;
-	 
-	@Autowired
+	@InjectMocks
 	CrawlingDataService crawlingDataService;
 	
 	@BeforeEach
 	void beforeEach() {
-		crawlingDataService = new CrawlingDataService(craw);
-	}
-	
-	@Test
-	void readWebSite () {
-		
 		//given
 		String keyword = "jquery";
 		Long userId = Long.valueOf(12345);
 		
 		//when
-		crawlingDataService.crawlingDataWeb(userId ,keyword);
-		Optional<CrawlingData> data = craw.findByUserId(userId);
+		crawlingDataService.startCrawlingDataWeb(userId ,keyword);
+	}
+	
+	@Test
+	void readWebSite () {
+	
 		//then
-		Assertions.assertTrue(data.isPresent());
+		Assertions.assertEquals(crawlingDataService.fincCrawlingDataByUserId(Long.valueOf(12345)).isEmpty(), false);
 		
 	}
 }
