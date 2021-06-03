@@ -1,4 +1,4 @@
-package com.restapi.crawling.crawlingdata.domain;
+package com.restapi.crawling.domain;
 
 import java.io.IOException;
 import java.util.HashMap;

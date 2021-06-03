@@ -29,7 +29,7 @@ public class SwaggerConfig {
 				.apiInfo(this.apiInfo())
 				.select()
 				.apis(RequestHandlerSelectors
-						.basePackage("com.restapi.crawlingData.controller"))
+						.basePackage("com.restapi.crawling.controller"))
 				.paths(PathSelectors.ant("/search/**"))
 				.build();
 	}

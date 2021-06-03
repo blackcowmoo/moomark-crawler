@@ -1,11 +1,14 @@
-package com.restapi.crawling.crawlingdata.service;
+package com.restapi.crawling.service;
 
-import com.restapi.crawling.crawlingdata.repository.CrawlingDataRepository;
-import com.restapi.crawling.crawlingdata.domain.JobkoreaCrawlingSetting;
-import com.restapi.crawling.crawlingdata.domain.CrawlingData;
-import com.restapi.crawling.crawlingdata.domain.CrawlingSiteUrl;
+import com.restapi.crawling.domain.CrawlingData;
+import com.restapi.crawling.domain.CrawlingSiteUrl;
+import com.restapi.crawling.domain.JobkoreaCrawlingSetting;
+import com.restapi.crawling.repository.CrawlingDataRepository;
+
+import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -13,20 +16,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CrawlingDataService {
+@Transactional
+@RequiredArgsConstructor
+public class CrawlingDataService{
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private final JobkoreaCrawlingSetting setting = new JobkoreaCrawlingSetting();
-
+	
 	@Autowired
 	private final CrawlingDataRepository crawlingDataRepository;
 
-	@Autowired
-	public CrawlingDataService(CrawlingDataRepository crawlingDataRepository) {
-		this.crawlingDataRepository = crawlingDataRepository;
-	}
 
 	/**
 	 * 크롤링한 데이터 DB에 저장
@@ -67,7 +69,7 @@ public class CrawlingDataService {
 	 * @param userId
 	 * @return
 	 */
-	public java.util.Optional<CrawlingData> fincCrawlingDataByUserId(Long userId) {
+	public List<CrawlingData> fincCrawlingDataByUserId(String userId) {
 		return crawlingDataRepository.findByUserId(userId);
 	}
 

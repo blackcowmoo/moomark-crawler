@@ -1,4 +1,4 @@
-package com.restapi.crawling.crawlingdata.domain;
+package com.restapi.crawling.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
